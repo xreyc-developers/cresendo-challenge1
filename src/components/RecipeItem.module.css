@@ -1,0 +1,43 @@
+/* ITEM WRAP */
+.recipe-item {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #111;
+    cursor: pointer;
+}
+
+.recipe-item:hover {
+    animation-name: hoverEffect;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+    100% {
+        transform: translate(-5px, -5px);
+        box-shadow: 7px 7px rgba(000,000,000,0.7);
+    }
+}
+
+/* IMAGE */
+.recipe-item>div:first-child {
+    overflow: hidden;
+}
+.recipe-item>div:first-child>img {
+    height: 250px;
+    transform: translateX(-20px);
+}
+
+/* TITLE */
+.recipe-item>div:nth-child(2) {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .recipe-item>div:first-child>img {
+        width: 100%;
+        transform: translateX(0px);
+    }
+}
