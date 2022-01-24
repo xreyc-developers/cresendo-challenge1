@@ -6,19 +6,44 @@ const api_base_uri = 'http://localhost:3001/';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [specials, setSpecials] = useState([]);
   const [isShowDetails, setIsShowDetails] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState({});
 
   useEffect(() => {
-    const getRecipes = async () => {
-      const response = await fetch(api_base_uri + "recipes");
-      const data = await response.json();
-      setRecipes(data);
+    const dataPrep = async () => {
+      // GET ALL RECIPES
+      const r_response = await fetch(api_base_uri + "recipes");
+      const r_data = await r_response.json();
+      setRecipes(r_data);
+
+      // GET ALL SPECIALS
+      const s_response = await fetch(api_base_uri + "specials");
+      const s_data = await s_response.json();
+      setSpecials(s_data);
     }
-    getRecipes();
+    dataPrep();
   },[]);
 
   const showRecipeHandler = (recipe) => {
+    let updatedIngredients = [];
+    // GET SPECIAL PER INGREDIENTS
+    recipe.ingredients.forEach(ingredient => {
+      const filteredSpecial = specials.find(specialItem => specialItem.ingredientId === ingredient.uuid);
+      if(filteredSpecial) {
+        updatedIngredients.push({
+          ...ingredient,
+          title: filteredSpecial.title,
+          type: filteredSpecial.type,
+          text: filteredSpecial.text
+        });
+      } else {
+        updatedIngredients.push(ingredient);
+      }
+    });
+    // UPDATE INGREDIENTS
+    recipe.ingredients = updatedIngredients;
+    // UPDATE SELECTED RECIPE
     setCurrentRecipe(recipe);
     setIsShowDetails(true);  
   }
@@ -29,7 +54,13 @@ function App() {
 
   return (
     <>
-      {isShowDetails && <Popup togglePopup={togglePopup} recipe={currentRecipe} api_base_uri={api_base_uri}/>}
+      {isShowDetails && 
+        <Popup 
+          togglePopup={togglePopup}
+          recipe={currentRecipe}
+          api_base_uri={api_base_uri}
+      />}
+      
       <div className="container">
         <header>
           RECIPES

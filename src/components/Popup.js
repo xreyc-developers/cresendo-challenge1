@@ -28,6 +28,9 @@ const Popup = ({ togglePopup, recipe, api_base_uri}) => {
                                 <div><b>Name:</b> {ingredient.name}</div>
                                 {ingredient.measurement && <div><b>Measurement:</b> {ingredient.measurement}</div>}
                                 {ingredient.amount && <div><b>Amount:</b> {ingredient.amount}</div>}
+                                {ingredient.title && <div><b>Title:</b> {ingredient.title}</div>}
+                                {ingredient.type && <div><b>Type:</b> {ingredient.type}</div>}
+                                {ingredient.text && <div><b>Text:</b> {ingredient.text}</div>}
                             </div>
                         ))}
                     </div>
