@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Popup from './components/Popup';
 import RecipeItem from './components/RecipeItem';
+import logo from './assets/1.png';
+import menu from './assets/2.png';
+
 const api_base_uri = 'http://localhost:3001/';
 
 function App() {
@@ -60,12 +63,20 @@ function App() {
           recipe={currentRecipe}
           api_base_uri={api_base_uri}
       />}
+
       
       <div className="container">
         <header>
-          RECIPES
+          <img src={logo}/>
         </header>
+
+
         <main>
+          <div className="content-menu">
+
+            <img src={menu} />
+          </div>
+
           <div className="row">
             {recipes.map(recipe => <RecipeItem 
               key={recipe.uuid} 

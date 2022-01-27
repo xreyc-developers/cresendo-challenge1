@@ -1,4 +1,5 @@
 import classes from './Popup.module.css';
+import recipeTitle from '../assets/3.png'
 
 const Popup = ({ togglePopup, recipe, api_base_uri}) => {
     const imgUrl = api_base_uri + recipe.images.full;
@@ -7,7 +8,9 @@ const Popup = ({ togglePopup, recipe, api_base_uri}) => {
             <div className={classes['popup-backdrop']} onClick={togglePopup}></div>
             <div className={classes['popup-wrap']}>
                 <div>
-                    <span>Recipe</span>
+                    <span>
+                        <img src={recipeTitle} style={{ width: '270px' }}/>
+                    </span>
                     <span className={classes['popup-close'] + ' ' + 'lnr lnr-cross'} onClick={togglePopup}></span>
                 </div>
                 <div>

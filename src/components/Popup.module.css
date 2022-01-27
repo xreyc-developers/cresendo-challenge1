@@ -7,11 +7,11 @@
 }
 
 .popup-wrap {
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 2px solid #000;
     height: calc(100% - 100px);
-    width: 500px;
+    width: 550px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -21,7 +21,7 @@
 
 /* HEADER */
 .popup-wrap>div:first-child {
-    padding: 0px 0px 10px 0px;
+    padding: 0px 0px 20px 0px;
     text-align: center;
     font-size: 30px;
     font-family:'Times New Roman', Times, serif;
@@ -31,7 +31,7 @@
 /* CLOSE */
 .popup-close {
     position: absolute;
-    transform: translate(150px, 0px);
+    transform: translate(80px, 20px);
 }
 .popup-close:hover {
     color: rgb(136, 31, 31);
